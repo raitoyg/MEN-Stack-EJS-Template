@@ -21,3 +21,8 @@ Use npm start to run project
 ```bash
 npm start
 ```
+
+## IMPORTANT
+```bash
+node version >=13
+```
