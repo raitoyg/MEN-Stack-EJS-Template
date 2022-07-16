@@ -6,11 +6,15 @@ import createError from 'http-errors'
 import session from 'express-session'
 import logger from 'morgan'
 import methodOverride from 'method-override'
+import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+
 // connect to MongoDB with mongoose
 import('./config/database.js')
 
 // require routes
 import { router as indexRouter } from './routes/index.js'
+import { router as userRouter } from './routes/user.js'
 
 // create the express app
 const app = express()
@@ -27,6 +31,9 @@ app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 app.use(
   express.static(
     path.join(path.dirname(fileURLToPath(import.meta.url)), 'public')
@@ -47,10 +54,15 @@ app.use(
 
 // router middleware
 app.use('/', indexRouter)
+app.use('/user', userRouter)
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404))
+app.use(function (req, res) {
+  res.status(404).render('404',
+    {
+      title: "Page not found",
+      popup: null
+    })
 })
 
 app.use(function (err, req, res, next) {

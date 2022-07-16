@@ -1,18 +1,48 @@
-  <% if (!user) { %>
-    <link rel="stylesheet" href="/stylesheets/siwg.css">
-  <% } %>
-</head>
-<body>
-  <nav>
-    <% if (user) { %>
-      <a href="/auth/logout">
-        <button type="submit">Logout</button>
-      </a>
-    <% } else { %>
-      <a href="/auth/google" class="siwg-link">
-        <button type="submit" class="siwg">
-          <img id="siwg-image" alt="Sign in with Google" />
-        </button>
-      </a>
-    <% } %>
-  </nav>
+<div class="flex-column nav">
+    <div class="row justify-content-center">
+        <a class="col logo" href="/">
+            <img src="/images/eNational-logo.png" alt="Avatar Logo" class="rounded">
+        </a>
+        <div class="col">
+            <form>
+                <input type="search" class="form-control rounded-4 bg-light" placeholder="Search a book/author/publisher">
+            </form>
+        </div>
+        <% if (user) { %>
+            <div class="col" id="navuser">
+                <div class="col float-end dropdown d-inline">
+                    <button type="button" style="border: none;" class="btn dropdown-toggle" data-bs-toggle="dropdown" id="username" name="Username"><%= user.fullName %></button>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a href="/user/profile" class="dropdown-item">My Profile</a></li>
+                        <li><a href="/user/logout" class="dropdown-item">Log Out</a></li>
+                        <% if (user.type == "admin") { %>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a href="#" class="dropdown-item" id="admintooloption">Admin Tools</a></li>
+                        <% } %>
+                    </ul>
+                </div>
+                <img class="col float-end rounded-circle" src="/images/user-icon.png" alt="User Avatar" style="width: 36px">
+            </div>
+        <% } else { %>
+            <div class="col" id="navloginregbtn">
+                <a href="/user/register" class="btn float-end me-2" id="navregisterbtn">Register</a>
+                <a href="/user/login" class="btn float-end me-3" id="navloginbtn">Login</a>
+            </div>  
+        <% } %>
+    </div>
+    <div class="row justify-content-center">
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="/books" class="navbar2first">BOOKS</a>
+            <a href="/books/authors" class="navbar2">AUTHORS</a>
+            <a href="/books/publishers" class="navbar2">PUBLISHERS</a>
+            <div>
+                <a href="/books/special-docs" class="navbar2">SPECIAL DOCS</a>
+                <span class="fa fa-star checked"></span> 
+            </div>
+            <a href="/news-offers" class="navbar2">NEWS & OFFERS</a>
+            <a href="/user/subscribe" class="navbar2">SUBSCRIPTION</a>
+        </div>
+    </div>
+</div>
