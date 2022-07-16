@@ -15,7 +15,7 @@ npm i
 
 Rename  ".env-bac" to ".env" and fill in everything
 
-
+Un-Commented the config/database.js
 
 Use npm start to run project
 ```bash
