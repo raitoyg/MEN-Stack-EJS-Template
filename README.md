@@ -26,3 +26,10 @@ npm start
 ```bash
 node version >=13
 ```
+
+## Demo
+```bash
+http://localhost:3000/api-demo
+```
+1. Paste the link in postman, set request type to POST.
+2. Go to body, select url-encoded, and type "str" in key with value of what ever.
