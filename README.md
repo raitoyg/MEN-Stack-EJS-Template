@@ -1,10 +1,10 @@
-# SE E-National Library
+# MEN-Stack-EJS Template 
 
 ## To run this project
 
 ```bash
-git clone https://github.com/Jeffendix/SE.20212.Group510.git
-cd SE.20212.Group510
+git clone https://github.com/technich214/MEN-Stack-EJS-Template.git
+cd MEN-Stack-EJS-Template
 ```
 
 Run npm i to fetch the template's dependencies:
